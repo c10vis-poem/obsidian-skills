@@ -1,9 +1,13 @@
 ---
-name: horizons-wiki
-description: "Horizons Android app — architecture, UI, NPU routing, and on-device AI backend. Use when working on the Horizons Kotlin/Compose app, its HomeGrid UI, theme system, font resources, NPU/HTP integration, or the loopback bridge to Termux. Also use when the user says 'Horizons,' 'the app,' 'home screen,' 'router,' or references the Android side of the on-device AI stack."
+name: horizons-repo-skill
+description: "Portable copy of the Horizons Android app's stable architecture — for use outside the Novus-Agenti repo (Obsidian vault, Drive, sessions without repo access). Use when working on the Horizons Kotlin/Compose app, its HomeGrid UI, theme system, font resources, NPU/HTP integration, or the loopback bridge to Termux, and the actual repo isn't checked out. Also use when the user says 'Horizons,' 'the app,' 'home screen,' 'router,' or references the Android side of the on-device AI stack. Not the canonical source — Novus-Agenti's own CLAUDE.md is the wiki of record; this mirrors its stable architecture only, never current state."
 ---
 
-# Horizons Wiki
+# Horizons Repo Skill
+
+Portable mirror of the Horizons/Novus-Agenti architecture, for contexts without repo access (Obsidian, Drive, other sessions). **The actual `CLAUDE.md` in `c10vis-poem/Novus-Agenti` is the wiki of record** — its `## State of the Union` section is the only source of current state. This file carries only stable architecture that doesn't change week to week; it is not a substitute for reading CLAUDE.md when the repo is available, and it never duplicates SOTU content.
+
+There is also a separate, differently-scoped skill inside the repo itself: `skills/horizons-wiki/SKILL.md` — a cache-optimized bundle loader (points at CLAUDE.md + two knowledge docs, no inline content). That one and this one solve different problems and are not meant to be reconciled into one file.
 
 ## What Horizons Is
 
