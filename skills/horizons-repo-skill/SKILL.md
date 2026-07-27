@@ -42,9 +42,9 @@ See the `termux-helper` skill for the Termux side of this split.
 
 Next mission: Horizons will also host a lightweight Kotlin-accessible llama.cpp instance that Termux agents can call into, hitting the HTP backend through the app's vendor lib access. This turns Horizons into a true backend router — the Termux agent in local shell mode shuts down its own llama-server and routes through the app instead.
 
-## UI — HomeGrid (v5, complete)
+## UI — HomeGrid
 
-The home screen is the `HomeGrid` composable. Current state as of commit `984b061` on `claude/homegrid-v5-tuned`:
+The home screen is the `HomeGrid` composable. These are the stable design decisions — for current build/branch status, read CLAUDE.md's `## State of the Union`.
 
 ### Layout Constants
 
@@ -95,29 +95,13 @@ All XML weight resources and variable .ttf files have been **removed**. Only the
 
 `audiowide.ttf` was also removed (replaced by Orbitron).
 
-## Build
+## Build Gotcha (stable — this is a standing config trap, not current status)
 
-- `build-apk.yml` triggers on push to ALL branches and overwrites the shared `latest-debug` release tag — any push to any branch clobbers the release
-- To build from a specific branch, use `workflow_dispatch` targeting that branch
-- Snapshot branch `claude/homegrid-v5-SNAPSHOT-good-1837dc2` preserves the pre-layout-tuning build
+`build-apk.yml` triggers on push to ALL branches and overwrites the shared `latest-debug` release tag — any push to any branch clobbers the release. To build from a specific branch without clobbering, use `workflow_dispatch` targeting that branch.
 
-## Known Issues
+## Current State
 
-### Startup Crash (~10s)
-
-`Breadcrumb.kt` was doing a full-file read of `crash.log` on the `startForegroundService()` 10-second deadline path. Fix pushed (tail-window read, in-memory fallback for FGS path, crash.log capped at 256KiB with rotation) but not confirmed on device yet.
-
-### Theme Colors Stale
-
-`HorizonsTheme.kt` contains colors that don't match V5's inline palette. V5 defines its own private color vals in HomeGrid.kt. The theme file needs updating to match, but V5 doesn't depend on it.
-
-## Branches
-
-| Branch | Purpose |
-|--------|---------|
-| `claude/homegrid-v5-tuned` | Active development, PR #31 |
-| `claude/homegrid-v5-SNAPSHOT-good-1837dc2` | Pre-tuning snapshot |
-| `main` | Base, behind active work |
+Not tracked here. Read `CLAUDE.md`'s `## State of the Union` in `c10vis-poem/Novus-Agenti` for active branch, known issues, and build status — that section is rewritten in place every session and is the only place current state should live.
 
 ## Credit
 
